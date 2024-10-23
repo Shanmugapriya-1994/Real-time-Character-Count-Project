@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea</title>
+     <!-- CDN link for Google fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+     background-color: rgba(113, 133, 237, 0.397);
+     width: 100%;
+     position: absolute;
+     
+}
+.container{
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 40%;
+    background-color: rgb(172, 206, 250);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: center;
+    position: relative;
+    margin-top: 100px;
+    margin-left: 400px;
+    margin: 10x;
+    padding: 15px;
+    gap: 20px;
+    border-radius: 30PX;
+    width: 40%;
+    }
+    .head{
+        position: relative;
+       align-items: center;
+    }
+    
+    textarea{
+        border-radius: 7PX; 
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid gainsboro;
+        margin-bottom: 20px;
+        color: black;
+    }
+    textarea:focus{
+       outline-color: rgb(15, 175, 238);
+    }
+    .count{
+        padding: 10px;
+        color:rgb(61, 58, 58);
+        font-size: 16px;
+        position: relative;
+        margin-left: 350px;
+        
+    }
+    .warning{
+        color: red;
+        display: block;
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 500px;
+     }
+    .hidden{
+        display: none;
+    }
+    /* Media queries */
+    @media screen and (max-width:800px) {
+     .container
+        {
+            font-size: 16px;
+       }
+        textarea{
+            width: 200px;
+           height: 200px; 
+            
+        }
+      .count{
+         margin-left: 100px;
+      }
+        
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="head">Message Box</div>
+       <textarea placeholder="Type Your Message Here..." id="message" rows="5" cols="50"  onkeydown="count(event)"></textarea>
+        <div class="count" id="charcount">0/200 characters</div>
+    </div>
+    <div class="warning"></div>
+
+
+    <script>
+           function count(event){
+        var msg = document.getElementById("message")
+        var charcount = document.getElementById("charcount")
+        var warning = document.querySelector(".warning")
+        var maxLength = 200
+        var charlen = msg.value.length
+       // var charRemain = (maxLength - charlen);
+    
+
+            if(charlen > maxLength)
+        {
+             console.log("you cross limit")
+             warning.innerHTML = '<span style="color: red;">You have exceeded the limit of '+maxLength+' characters</span>'
+            //warning.classList.remove("hidden")
+            msg.disabled = true
+        }
+        else{  
+            charcount.innerHTML = msg.value.length +" /200  characters"
+            console.log(msg.value.length)
+           // warning.classList.add("hidden")
+        }            
+        }
+      
+    </script>
+     
+</body>
+</html>
